@@ -12,7 +12,7 @@ Simple wetaher app
 
 * https://openweathermap.org/api
 
-## Courses
+## Packages
 
 The following is a list of packages associated with the App.
 
@@ -22,7 +22,7 @@ The following is a list of packages associated with the App.
 * Body-Parser
 * CORS
 
-## Accessing on the browser
+## Loading on the browser with a server
 
 * npm i 
 * npm start
