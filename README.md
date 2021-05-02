@@ -10,7 +10,7 @@ Simple wetaher app
 
 ## API
 
-The following is a list of current projects required to complete the Front End Nanodegree.
+* https://openweathermap.org/api
 
 ## Courses
 
@@ -24,8 +24,8 @@ The following is a list of packages associated with the App.
 
 ## Accessing on the browser
 
-npm i 
-npm start
+* npm i 
+* npm start
 
 ## Style-Guide
 
