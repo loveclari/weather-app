@@ -8,8 +8,8 @@ const app = express();
 
 // Create JS object
 // Respond with JS object when a GET request is made to the homepage
-app.get('/myweather', function(req, res) {
-    res.send(projectData);
+app.get('/myweather', function(request, response) {
+    response.send(projectData);
 });
 
 /* Dependencies */
@@ -47,8 +47,8 @@ const data = [];
 
 app.post('/myweather', myWeather);
 
-function myWeather(req, res) {
-    console.log(req.body);
-    projectData = req.body;
-    res.send(projectData);
+function myWeather(request, response) {
+    console.log(request.body);
+    projectData = request.body;
+    response.send(projectData);
 }
