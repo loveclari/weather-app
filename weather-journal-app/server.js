@@ -8,7 +8,7 @@ const app = express();
 
 // Create JS object
 // Respond with JS object when a GET request is made to the homepage
-app.get('/myweather', function(request, response) {
+app.get('/all', function(request, response) {
     response.send(projectData);
 });
 
@@ -28,7 +28,7 @@ app.use(cors());
 
 // Initialize the main project folder
 
-app.use(express.static('weather-app'));
+app.use(express.static('website'));
 
 // Setup Server
 
@@ -45,10 +45,11 @@ function listening() {
 
 const data = [];
 
-app.post('/myweather', myWeather);
+app.post('/addWeather', addWeather);
 
-function myWeather(request, response) {
+function addWeather(request, response) {
     console.log(request.body);
+    data.push(req.body);
     projectData = request.body;
     response.send(projectData);
 }

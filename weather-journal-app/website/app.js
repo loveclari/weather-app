@@ -4,6 +4,9 @@ const apiKey = '&units=metric&appid=352804011ad97b01a1d1f3290ca1a86e';
 
 let zip = document.getElementById('zip');
 let feelings = document.getElementById('feelings');
+const date = document.getElementById('date');
+const temp = document.getElementById('temp');
+const content = document.getElementById('content');
 
 //function wtih promise
 
@@ -12,9 +15,9 @@ document.getElementById('generate').addEventListener('click', performAction);
 function performAction(e) {
     e.preventDefault();
     const getZip = zip.value;
-    getWeather(baseURL, getZip, apiKey)
+    getWeatherData(baseURL, getZip, apiKey)
         .then(function(newData) {
-            postData('/myweather', {
+            postData('/addWeather', {
                 temp: newData.main.temp,
                 feelings: feelings.value,
             });
@@ -22,7 +25,7 @@ function performAction(e) {
         .then(() => updateUI());
 }
 
-const getWeather = async(baseURL, getZip, apiKey) => {
+const getWeatherData = async(baseURL, getZip, apiKey) => {
     const keys = `${baseURL}${getZip}${apiKey}`;
 
     const response = await fetch(keys);
@@ -61,8 +64,10 @@ const postData = async(url = '', data = {}) => {
 
 const getData = async(url = '') => {
     const request = await fetch(url);
+    console.log(request);
     try {
-        const getData = await request.json();
+        const allData = await request.json();
+        console.log(allData);
     } catch (error) {
         console.log('The API is getting an error', error);
     }
@@ -73,12 +78,12 @@ let d = new Date();
 let newDate = `${d.getMonth()}/${d.getDate()}/${d.getFullYear()}`;
 
 const updateUI = async() => {
-    const request = await fetch('/myweather');
+    const request = await fetch('/all');
     try {
-        const lastEntry = await request.json();
-        document.getElementById('date').innerHTML = lastEntry['date'];
-        document.getElementById('temp').innerHTML = lastEntry['temp'];
-        document.getElementById('content').innerHTML = lastEntry['feeling'];
+        const allData = await request.json();
+        date.innerHTML = allData[0].date;
+        // temp.innerHTML = `Temperature: ${getData.newEntry[getData.newEntry.length - 1].temp}`;
+        // content.innerHTML = `How I'm feeling: ${getData.newEntry[agetData.newEntry.length - 1].feelings}`;
     } catch (error) {
         console.log('error', error);
     }
