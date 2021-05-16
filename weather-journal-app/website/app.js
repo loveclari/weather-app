@@ -82,8 +82,8 @@ const updateUI = async() => {
     try {
         const allData = await request.json();
         date.innerHTML = allData[0].date;
-        // temp.innerHTML = `Temperature: ${getData.newEntry[getData.newEntry.length - 1].temp}`;
-        // content.innerHTML = `How I'm feeling: ${getData.newEntry[agetData.newEntry.length - 1].feelings}`;
+        temp.innerHTML = allData[0].temp;
+        content.innerHTML = allData[0].content;
     } catch (error) {
         console.log('error', error);
     }
