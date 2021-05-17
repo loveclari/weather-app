@@ -1,9 +1,10 @@
 /* Global Variables */
 const baseURL = 'https://api.openweathermap.org/data/2.5/weather?zip=';
-const apiKey = '&units=metric&appid=352804011ad97b01a1d1f3290ca1a86e';
+const apiKey = '&units=imperial&appid=352804011ad97b01a1d1f3290ca1a86e';
 
 let zip = document.getElementById('zip');
 let feelings = document.getElementById('feelings');
+const city = document.getElementById('city');
 const date = document.getElementById('date');
 const temp = document.getElementById('temp');
 const content = document.getElementById('content');
@@ -16,10 +17,11 @@ function performAction(e) {
     e.preventDefault();
     const getZip = zip.value;
     getWeatherData(baseURL, getZip, apiKey)
-        .then(function(newData) {
-            postData('/addWeather', {
-                temp: newData.main.temp,
+        .then(function(data) {
+            postData('/addweather', {
+                temp: data.main.temp,
                 feelings: feelings.value,
+                city: data.name,
             });
         })
         .then(() => updateUI());
@@ -27,9 +29,8 @@ function performAction(e) {
 
 const getWeatherData = async(baseURL, getZip, apiKey) => {
     const keys = `${baseURL}${getZip}${apiKey}`;
-
-    const response = await fetch(keys);
     try {
+        const response = await fetch(keys);
         const data = await response.json();
         console.log(data);
         return data;
@@ -46,7 +47,7 @@ const postData = async(url = '', data = {}) => {
         method: 'POST',
         credentials: 'same-origin',
         headers: {
-            'content-type': 'application/json',
+            'Content-Type': 'application/json',
         },
         body: JSON.stringify(data),
     });
@@ -81,9 +82,10 @@ const updateUI = async() => {
     const request = await fetch('/all');
     try {
         const allData = await request.json();
-        date.innerHTML = allData[0].date;
-        temp.innerHTML = allData[0].temp;
-        content.innerHTML = allData[0].content;
+        city.innerHTML = allData.city;
+        date.innerHTML = newDate;
+        temp.innerHTML = allData.temp;
+        content.innerHTML = allData.feelings;
     } catch (error) {
         console.log('error', error);
     }
