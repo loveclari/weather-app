@@ -5,6 +5,7 @@ const apiKey = '&units=imperial&appid=352804011ad97b01a1d1f3290ca1a86e';
 let zip = document.getElementById('zip');
 let feelings = document.getElementById('feelings');
 const city = document.getElementById('city');
+const country = document.getElementById('country');
 const date = document.getElementById('date');
 const temp = document.getElementById('temp');
 const content = document.getElementById('content');
@@ -22,6 +23,7 @@ function performAction(e) {
                 temp: data.main.temp,
                 feelings: feelings.value,
                 city: data.name,
+                country: data.sys.country,
             });
         })
         .then(() => updateUI());
@@ -82,9 +84,10 @@ const updateUI = async() => {
     const request = await fetch('/all');
     try {
         const allData = await request.json();
-        city.innerHTML = allData.city;
+        city.innerHTML = `${allData.city},`;
+        country.innerHTML = allData.country;
         date.innerHTML = newDate;
-        temp.innerHTML = allData.temp;
+        temp.innerHTML = `${Math.floor(allData.temp)}°c`;
         content.innerHTML = allData.feelings;
     } catch (error) {
         console.log('error', error);

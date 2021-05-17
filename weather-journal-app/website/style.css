@@ -1,111 +1,162 @@
-body{
+body {
     background: #fffff8;
+    margin: 0;
     font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+    overflow-y: hidden;
+    overflow-x: hidden;
 }
 
-#app{
+#app {
     display: grid;
-    grid-auto-rows: minmax(150px, auto);
-    /* grid-template-columns:  */
-    height:100vh;
-    background: #f23557;
-    color: #f0d43a;
-    justify-content: center;
-    grid-gap: 1em;
+    padding: 50px;
+    height: 700px;
+    grid-template-rows: 170px 1fr;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+    grid-template-areas: "holder holder holder" "entry entry entry";
+    grid-gap: 20px;
+    background: rgb(2, 0, 36);
+    background: rgb(2, 0, 36);
+    background: linear-gradient(356deg, rgba(2, 0, 36, 1) 0%, rgba(6, 5, 144, 1) 68%, rgba(69, 75, 198, 1) 100%);
+    color: #f4f4f4;
     font-size: 20px;
-    font-family: 'Oswald', sans-serif;
 }
 
-.holder{
+.holder {}
 
-}
-
-.entry{
+.entry {
+    grid-area: 'entry';
+    grid-column: 1 /span 3;
     background: rgba(59, 74, 107, .4);
+    border-radius: 15px;
 }
 
-#entryHolder{
-
+#entryHolder {
+    padding: 50px;
+    border-radius: 3px;
 }
 
-#date{
-
+#date {
+    font-family: 'Roboto', sans-serif;
+    font-size: 20px;
+    padding: 0 20px 50px 20px;
 }
 
-#temp{
-
+#temp {
+    font-family: 'Roboto', sans-serif;
+    font-size: 150px;
+    font-stretch: expanded;
 }
 
-#content{
-
+#content {
+    padding: 20px;
 }
 
-.headline {
-
+#city {
+    font-family: 'Roboto', sans-serif;
+    font-size: 50px;
+    padding: 20px 5px 5px 20px;
 }
-.title{
 
+#country {
+    font-size: 42px;
+    padding: 20px 5px 5px;
+    font-weight: 300;
 }
+
+.location {
+    display: flex;
+}
+
 
 /*  Basic Styling To Override Default For Basic HTML Elements */
-label{
-    display:block;
-    font-size: 27px;
+
+label {
+    display: block;
+    font-size: 18px;
+    padding-bottom: 10px;
 }
 
-input{
-    display:block;
-    height: 60px;
-    width: 320px;
-    background:#22b2da;
-    color: #f0d43a;
-    font-size: 20px;
-    font-family: 'Oswald', sans-serif;
+input {
+    display: block;
+    background: #070a43;
+    color: #f4f4f4;
+    font-size: 16px;
+    font-weight: 200;
+    font-family: 'Roboto', sans-serif;
+    border-radius: 5px;
+    border: 1px solid #454bc6;
+    padding-left: 10px;
+    padding-right: 50px;
+}
+
+#zip {
+    margin-top: 7px;
+}
+
+#feel {
+    grid-column: 2;
+}
+
+button {
+    background: #8b89e2;
+    color: #f4f4f4;
+    font-size: 18px;
+    font-family: 'Roboto', sans-serif;
     border: none;
+    border-radius: 5px;
+    padding-left: 70px;
+    padding-right: 70px;
+    text-align: center;
+    margin-top: 38px;
 }
 
-button{
-    width: 400px;
-    height: 100px;
-    background: #3b4a6b;
-    color: #f0d43a;
-    font-size: 26px;
-    font-family: 'Oswald', sans-serif;
-    border: none;
-    box-shadow: 2px 4px 5px #444;
-}
-h1{
-    font-size: 36px;
+h1 {
+    font-size: 18px;
+    font-family: 'Roboto', sans-serif;
+    margin: 0;
 }
 
-textarea{
-    background:#22b2da;
-    color: #f0d43a;
-    font-size: 20px;
-    font-family: 'Oswald', sans-serif;
+textarea {
+    background: #070a43;
+    border: 1px solid #454bc6;
+    border-radius: 5px;
+    color: #f4f4f4;
+    top: 7px;
+    position: relative;
+    height: 20px;
+    font-size: 16px;
+    padding-left: 10px;
+    padding-right: 120px;
+    font-family: 'Roboto', sans-serif;
 }
+
+
 /* Reset style for HTML element on active to have no border*/
+
 input:focus,
 select:focus,
 textarea:focus,
 button:focus {
     outline: none;
 }
+
+
 /* Style for Placeholder Text*/
-::placeholder { /* Firefox, Chrome, Opera */ 
-    color: #f0d43a; 
-    font-family: 'Oswald', sans-serif;
 
-} 
-  
-:-ms-input-placeholder { /* Internet Explorer 10-11 */ 
-    color: #f0d43a; 
-    font-family: 'Oswald', sans-serif;
+::placeholder {
+    /* Firefox, Chrome, Opera */
+    color: #f4f4f4;
+    font-family: 'Roboto', sans-serif;
+}
 
-} 
-  
-::-ms-input-placeholder { /* Microsoft Edge */ 
-    color: #f0d43a; 
-    font-family: 'Oswald', sans-serif;
+:-ms-input-placeholder {
+    /* Internet Explorer 10-11 */
+    color: #f4f4f4;
+    font-family: 'Roboto', sans-serif;
+}
 
-} 
+::-ms-input-placeholder {
+    /* Microsoft Edge */
+    color: #f4f4f4;
+    font-family: 'Roboto', sans-serif;
+}
