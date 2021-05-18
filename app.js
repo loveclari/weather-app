@@ -72,7 +72,7 @@ const getData = async(url = '') => {
         const allData = await request.json();
         console.log(allData);
     } catch (error) {
-        console.log('The API is getting an error', error);
+        console.log('Could not fetch', error);
     }
 };
 
@@ -87,7 +87,7 @@ const updateUI = async() => {
         city.innerHTML = `${allData.city},`;
         country.innerHTML = allData.country;
         date.innerHTML = newDate;
-        temp.innerHTML = `${Math.floor(allData.temp)}°c`;
+        temp.innerHTML = `${Math.floor(allData.temp)}°F`;
         content.innerHTML = allData.feelings;
     } catch (error) {
         console.log('error', error);
