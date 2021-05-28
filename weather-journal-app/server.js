@@ -37,13 +37,13 @@ function listening() {
 // // Create JS object
 // // Respond with JS object when a GET request is made to the homepage
 
-app.get('/all', function(req, res) {
+app.get('https://happy-weather-app.netlify.app/all', function(req, res) {
     res.send(projectData);
 });
 
 //POST route
 
-app.post('/addweather', function(req, res) {
+app.post('https://happy-weather-app.netlify.app/addweather', function(req, res) {
     // projectData = {
     //     temp: req.body.temp,
     //     date: req.body.date,
